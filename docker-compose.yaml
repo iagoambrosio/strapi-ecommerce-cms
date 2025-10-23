@@ -16,7 +16,6 @@ services:
       APP_KEYS: ${APP_KEYS}
       NODE_ENV: ${NODE_ENV}
       EASYPOST_API_KEY: 123
-      HOME : /app
     entrypoint: npm run develop
     volumes:
       - ./config:/opt/app/config

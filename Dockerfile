@@ -32,6 +32,6 @@ EXPOSE 1337
 # Usuário não-root é recomendado em produção
 RUN groupadd -r strapi && useradd -r -g strapi strapi && chown -R strapi:strapi /app
 USER strapi
-
+ENV HOME=/app
 # Comando padrão para iniciar Strapi
 CMD ["npm", "run", "start"]
