@@ -15,7 +15,8 @@ services:
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
       APP_KEYS: ${APP_KEYS}
       EASYPOST_API_KEY: 123
-    entrypoint: npm run start
+      NODE_ENV: development
+    entrypoint: npm run develop
     #volumes:
     #  - ./config:/opt/app/config
     #  - ./src:/opt/app/src
