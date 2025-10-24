@@ -1,5 +1,7 @@
-FROM node:18-bullseye AS builder
-
+FROM node:18-alpine AS runtime
+ENV PORT=1337
+ENV HOME=/app
+ENV NODE_ENV=production
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
@@ -12,26 +14,11 @@ COPY . .
 # Se existir um script de build (package.json), roda: `npm run build`
 RUN if [ -f package.json ] ; then npm run build ; fi
 
-# Runtime: imagem menor para execução
-FROM node:18-bullseye-slim AS runtime
-
 WORKDIR /app
-
-# Variáveis de ambiente sensatas para Strapi
-ENV PORT=1337
-
-# Copia apenas as dependências de produção do estágio builder
-COPY --from=builder /app/node_modules ./node_modules
-
-# Copia o restante necessário da aplicação
-COPY --from=builder /app .
-
 # Expor porta padrão do Strapi
-EXPOSE 1337
-
 # Usuário não-root é recomendado em produção
-RUN groupadd -r strapi && useradd -r -g strapi strapi && chown -R strapi:strapi /app
+RUN addgroup -S strapi && adduser -S -G strapi strapi && chown -R strapi:strapi /app
 USER strapi
-ENV HOME=/app
+EXPOSE 1337
 # Comando padrão para iniciar Strapi
 CMD ["npm", "run", "start"]
