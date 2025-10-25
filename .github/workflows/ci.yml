@@ -40,5 +40,8 @@ jobs:
           file: ./Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          # Use GitHub Actions cache for buildx to persist and reuse build cache
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           
           
