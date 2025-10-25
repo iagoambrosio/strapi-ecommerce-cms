@@ -1,7 +1,7 @@
 module.exports = {
 	apps: [
 		{
-			name: 'strapi-sneakpeaks',
+			name: 'strapi-cms',
 			script: 'npm',
 			args: 'start',
 		},

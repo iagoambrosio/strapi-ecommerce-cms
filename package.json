@@ -1,5 +1,5 @@
 {
-  "name": "my-project",
+  "name": "strapi-cms",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -23,7 +23,7 @@
     "styled-components": "^5.2.1"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "A"
   },
   "strapi": {
     "uuid": "7c28544f-6094-4825-8acc-14f74cf187c6"

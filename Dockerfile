@@ -22,3 +22,4 @@ USER strapi
 EXPOSE 1337
 # Comando padrão para iniciar Strapi
 CMD ["npm", "run", "start"]
+
